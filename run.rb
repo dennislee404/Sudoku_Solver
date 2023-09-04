@@ -46,16 +46,16 @@ def check_grid(sudoku_grid,empty_grid,possible_answer,row,column)
 	x = 0
 	while x < 3
 		y = 0
-		column = column
+		xcolumn = column
 		while y < 3
-			if empty_grid.include? sudoku_grid[row][column]
+			if empty_grid.include? sudoku_grid[row][xcolumn]
 
 			else
 				empty_grid << sudoku_grid[row][column]
-				possible_answer.delete(sudoku_grid[row][column])
+				possible_answer.delete(sudoku_grid[row][xcolumn])
 			end
 			y += 1
-			column += 1
+			xcolumn += 1
 		end
 		x += 1
 		row += 1
@@ -89,7 +89,7 @@ while row < 3
 			puts "[#{row}][#{column}]"
 			check_row(@sudoku_grid,empty_grid,possible_answer,row,column)
 			check_column(@sudoku_grid,empty_grid,possible_answer,row,column)
-			check_grid(@sudoku_grid,empty_grid,possible_answer,row,column)
+			check_grid(@sudoku_grid,empty_grid,possible_answer,0,0)
 		end
 		column += 1
 	end
